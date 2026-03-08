@@ -1,0 +1,9 @@
+---
+description: Project structure - styles in style.css, scripts in scripts.js
+alwaysApply: true
+---
+
+# Project Conventions
+
+- **Styles**: All CSS must be defined in `style.css`. Do not use inline styles or `<style>` blocks in HTML.
+- **Scripts**: All JavaScript must be in `scripts.js`. Do not use inline scripts or `<script>` blocks with code in HTML; only reference `scripts.js` via a `<script src="scripts.js">` tag.
