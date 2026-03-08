@@ -1,9 +1,10 @@
 ---
-description: Project structure - styles in style.css, scripts in scripts.js
+description: Project structure - PHP entry, styles in style.css, scripts in scripts.js
 alwaysApply: true
 ---
 
 # Project Conventions
 
-- **Styles**: All CSS must be defined in `style.css`. Do not use inline styles or `<style>` blocks in HTML.
-- **Scripts**: All JavaScript must be in `scripts.js`. Do not use inline scripts or `<script>` blocks with code in HTML; only reference `scripts.js` via a `<script src="scripts.js">` tag.
+- **Backend / pages**: Use PHP for the main entry and server-side logic. Prefer `.php` files (e.g. `index.php`) for pages that need backend processing.
+- **Styles**: All CSS must be defined in `style.css`. Do not use inline styles or `<style>` blocks in markup.
+- **Scripts**: All JavaScript must be in `scripts.js`. Do not use inline scripts or `<script>` blocks with code in HTML/PHP; only reference `scripts.js` via a `<script src="scripts.js">` tag.
