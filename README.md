@@ -14,7 +14,7 @@ Monorepo for the **Course Grades** project. Everything lives in this repo:
 - **Backend:** `cd backend && npm install && npm start` → API at `http://localhost:3000`.
 - **Mobile:** `cd mobile && npm install && npx expo start` → run on simulator or device.
 
-Deploy workflow (`.github/workflows/deploy.yml`) deploys only the **web/** folder to InfinityFree.
+**Deploy:** The workflow (`.github/workflows/deploy.yml`) deploys the **web/** folder to both GoDaddy and InfinityFree. Add the secrets listed at the top of that file (including `INFINITYFREE_FTP_SERVER`, `INFINITYFREE_FTP_USERNAME`, `INFINITYFREE_FTP_PASSWORD` for InfinityFree; host is usually `ftpupload.net`).
 
 ## Layout
 
