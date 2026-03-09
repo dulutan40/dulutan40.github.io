@@ -1,10 +1,22 @@
 ---
-description: Project structure - PHP entry, styles in style.css, scripts in scripts.js
+description: Monorepo - web/, backend/, mobile/; PHP + style.css + scripts.js in web
 alwaysApply: true
 ---
 
-# Project Conventions
+# Overall project (monorepo)
 
-- **Backend / pages**: Use PHP for the main entry and server-side logic. Prefer `.php` files (e.g. `index.php`) for pages that need backend processing.
-- **Styles**: All CSS must be defined in `style.css`. Do not use inline styles or `<style>` blocks in markup.
-- **Scripts**: All JavaScript must be in `scripts.js`. Do not use inline scripts or `<script>` blocks with code in HTML/PHP; only reference `scripts.js` via a `<script src="scripts.js">` tag.
+This repo is the **single overarching project** with three sub-projects, all in one place:
+
+1. **web/** — Website (PHP front-end). Pages and UI; deploy this folder to your PHP host.
+2. **backend/** — Shared Node/Express API for both the website and the mobile app.
+3. **mobile/** — React Native (Expo) app. Uses the same backend as the website.
+
+When adding features (grades, classes, auth), implement API in **backend/** and have **web/** and **mobile/** call it.
+
+---
+
+# Project conventions
+
+- **Web sub-project (web/):** Use PHP for the main entry and server-side logic. All CSS in `web/style.css`, all browser JS in `web/scripts.js`. No inline styles or `<style>` blocks; no inline scripts—only `<script src="scripts.js">`.
+- **Backend (backend/):** Node/Express. Add routes and DB in `backend/src/`.
+- **Mobile (mobile/):** React Native with Expo. Entry and screens under `mobile/app/`.
