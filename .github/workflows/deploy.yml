@@ -1,19 +1,11 @@
-# Deploys web/ to GoDaddy and InfinityFree (two separate FTP targets).
+# Deploys web/ to InfinityFree via FTP.
 #
-# Required secrets (GitHub → Settings → Secrets and variables → Actions):
-#
-#   GoDaddy (existing):
-#     FTP_SERVER, FTP_USERNAME, FTP_PASSWORD
-#     (optional) FTP_SERVER_DIR — default below is /
-#
-#   InfinityFree (add these for infinityfree.me):
-#     INFINITYFREE_FTP_SERVER   — usually ftpupload.net
-#     INFINITYFREE_FTP_USERNAME — e.g. epiz_12345678 (from InfinityFree panel)
-#     INFINITYFREE_FTP_PASSWORD — your InfinityFree account password
-#
-# Each deploy uses its own state file so they don't conflict.
+# Secrets (GitHub → Settings → Secrets and variables → Actions):
+#   FTP_SERVER   — usually ftpupload.net
+#   FTP_USERNAME — e.g. epiz_12345678 (from InfinityFree panel)
+#   FTP_PASSWORD — your InfinityFree account password
 
-name: Deploy (GoDaddy + InfinityFree)
+name: Deploy to InfinityFree
 
 on:
   push:
@@ -28,24 +20,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy to GoDaddy
+      - name: Deploy to InfinityFree
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_SERVER_DIR || '/' }}
-          local-dir: ./web/
-          state-name: .ftp-deploy-godaddy.json
-
-      - name: Deploy to InfinityFree
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{ secrets.INFINITYFREE_FTP_SERVER }}
-          username: ${{ secrets.INFINITYFREE_FTP_USERNAME }}
-          password: ${{ secrets.INFINITYFREE_FTP_PASSWORD }}
           server-dir: /htdocs/
           local-dir: ./web/
-          state-name: .ftp-deploy-infinityfree.json
+          state-name: .ftp-deploy-sync-state.json
           log-level: verbose
           timeout: 120000
